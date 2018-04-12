@@ -18,7 +18,7 @@ class Transaction extends Model
 
     static public function transactionsPerMonth()
     {
-        return self::selectRaw('month(creation_ts) `month`, sum(`value`) `sum`')
+        return self::selectRaw('month(creation_ts) `month`, -sum(`value`) `sum`')
             ->groupBy('month')
             ->orderBy('month', 'DESC')
             ->get();
